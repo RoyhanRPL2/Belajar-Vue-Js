@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+        body {
+            margin: 5%;
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <h1>{{ bilangan }}</h1>
+        <p>Bilangan ini adalah bilangan {{ infoBilangan }}</p>
+        <p>Welcome to Vue js</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script>
+        const company = {
+            name: 'Royhan',
+            message: "Hello World!",
+            qty: 2,
+            namaDepan: 'Royhan',
+            namaBelakang: 'Bumi',
+            bilangan: 5
+        }
+
+        const vm = new Vue({
+            el: '#app',
+            data: company,
+            methods: {
+                getName: function() {
+                    return 'Hello, ' + this.name
+                },
+            },
+            computed: {
+                totalBayar: function() {
+                    return this.qty * 10000
+                },
+                namaLengkap: function() {
+                    return this.namaDepan + ' ' + this.namaBelakang
+                },
+                infoBilangan: function() {
+                    if (this.bilangan % 2 == 0) {
+                        return 'genap'
+                    } else {
+                        return 'ganjil'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
