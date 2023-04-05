@@ -16,8 +16,9 @@
 <body>
     
     <div id="app">
-        <h1>{{ bilangan }}</h1>
-        <p>Bilangan ini adalah bilangan {{ infoBilangan }}</p>
+        <img v-bind:src="gambar" alt="">
+        <h1 v-text="name"></h1>
+        <p>The Progressive JavaScript Framework</p>
         <p>Welcome to Vue js</p>
     </div>
 
@@ -29,7 +30,9 @@
             qty: 2,
             namaDepan: 'Royhan',
             namaBelakang: 'Bumi',
-            bilangan: 5
+            bilangan: 20,
+            link: '<a href="http://google.com">Google</a>',
+            gambar: 'image/vueJs.png'
         }
 
         const vm = new Vue({
