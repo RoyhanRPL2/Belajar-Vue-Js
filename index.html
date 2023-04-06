@@ -12,40 +12,78 @@
             margin: 5%;
             font-family: 'Quicksand', sans-serif;
         }
+        img {
+            width: 10%;
+            height: 10%;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <h1>{{ getName() }}</h1>
+        <img v-bind:src="gambar" alt="">
+        <h1>{{ bilangan }}</h1>
+        <p>Bilangan ini adalah bilangan {{ infoBilangan }}</p>
+        <p>
+            <button @click="handleClick">Click</button>
+        </p>
+        <p>The Progressive JavaScript Framework</p>
         <p>Welcome to Vue js</p>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script>
         const company = {
             name: 'Royhan',
             message: "Hello World!",
-            isActive: true
+            qty: 2,
+            namaDepan: 'Royhan',
+            namaBelakang: 'Bumi',
+            bilangan: 1,
+            gambar: 'image/vueJS.png'
         }
 
         const vm = new Vue({
             el: '#app',
             data: company,
             methods: {
-                getName: function( ) {
-                    return 'Hello, ' +this.name
+                getName: function () {
+                    return 'Hello, ' + this.name
                 },
-                ubahNama: function(namaBaru) {
-                    this.name = namaBaru
-                    return this.getName()
+                handleClick: function() {
+                    this.bilangan++
+                    if (this.bilangan % 2 == 0) {
+                        this.gambar = 'image/react.png'
+                    } else {
+                        this.gambar = 'image/vueJS.png'
+                    }
                 }
             },
             computed: {
-                
+                totalBayar: function () {
+                    return this.qty * 10000
+                },
+                namaLengkap: function () {
+                    return this.namaDepan + ' ' + this.namaBelakang
+                },
+                infoBilangan: function () {
+                    if (this.bilangan % 2 == 0) {
+                        return 'genap'
+                    } else {
+                        return 'ganjil'
+                    }
+                },
+                ubahNama: function () {
+                    if (this.gambar == 'image/react.png') {
+                        return this.name = 'React JS'
+                    } else if (this.gambar == 'image/vueJS.png') {
+                        return this.name = 'Vue JS'
+                    } else {
+                        return this.name = 'Royhan'
+                    }
+                }
             }
-        })
+        });
     </script>
 </body>
 

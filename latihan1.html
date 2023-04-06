@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-        body {
+    <title>Document< /title> <style>
+            @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+            body {
             margin: 5%;
             font-family: 'Quicksand', sans-serif;
-        }
+            }
 
-        img {
+            img {
             width: 10%;
             height: 10%;
-        }
-    </style>
+            }
+            </style>
 </head>
+
 <body>
-    
+
     <div id="app">
         <img v-bind:src="gambar" alt="">
-        <h1>{{ ubahNama }}</h1>
+        <h1>{{ bilangan }}</h1>
         <p>The Progressive JavaScript Framework</p>
         <p>Welcome to Vue js</p>
     </div>
@@ -35,7 +36,7 @@
             qty: 2,
             namaDepan: 'Royhan',
             namaBelakang: 'Bumi',
-            bilangan: 5,
+            bilangan: 1,
             gambar: 'image/vueJS.png'
         }
 
@@ -43,35 +44,36 @@
             el: '#app',
             data: company,
             methods: {
-                getName: function() {
+                getName: function () {
                     return 'Hello, ' + this.name
                 },
             },
             computed: {
-                totalBayar: function() {
+                totalBayar: function () {
                     return this.qty * 10000
                 },
-                namaLengkap: function() {
+                namaLengkap: function () {
                     return this.namaDepan + ' ' + this.namaBelakang
                 },
-                infoBilangan: function() {
+                infoBilangan: function () {
                     if (this.bilangan % 2 == 0) {
                         return 'genap'
                     } else {
                         return 'ganjil'
                     }
                 },
-                ubahNama: function() {
+                ubahNama: function () {
                     if (this.gambar == 'image/react.png') {
                         return this.name = 'React JS'
                     } else if (this.gambar == 'image/vueJS.png') {
                         return this.name = 'Vue JS'
                     } else {
                         return this.name = 'Royhan'
-                    }   
+                    }
                 }
             }
         });
     </script>
 </body>
+
 </html>
