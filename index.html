@@ -33,8 +33,6 @@
             background-color: white;
             border: 2px solid black;
         }
-
-        
     </style>
 </head>
 
@@ -42,7 +40,8 @@
     <div id="app">
         <header>
             <img v-bind:src="gambar" alt="">
-            <h1>{{ bilangan }}</h1>
+            <h1>{{ name }}</h1>
+            <input type="text" v-model="name">
             <p>Bilangan ini adalah bilangan {{ infoBilangan }}</p>
             <p>
                 <button @click="handleClick">Click</button>
@@ -50,14 +49,24 @@
             <p>The Progressive JavaScript Framework</p>
             <p>Welcome to Vue js</p>
 
-            <button v-bind:class="{active:menu === 'home'}" v-on:click="menu = 'home'">Home</button>
-            <button v-bind:class="{active:menu === 'about'}" v-on:click="menu = 'about'">About</button>
-            <button v-bind:class="{active:menu === 'blog'}" v-on:click="menu = 'blog'">Blog</button>
+            <p>{{ kelas }}</p>
+            <div>
+                <label for=""><input type="checkbox" value="React" v-model="kelas">React</label>
+                <label for=""><input type="checkbox" value="VueJS" v-model="kelas">VueJS</label>
+                <label for=""><input type="checkbox" value="Angular" v-model="kelas">Angular</label>
+            </div>
+
+            <p>
+                <button v-bind:class="{active:menu === 'home'}" v-on:click="menu = 'home'">Home</button>
+                <button v-bind:class="{active:menu === 'about'}" v-on:click="menu = 'about'">About</button>
+                <button v-bind:class="{active:menu === 'blog'}" v-on:click="menu = 'blog'">Blog</button>
+            </p>
+
 
             <div>
                 <button class="button" v-on:click="gambar = 'image/react.png'">React</button>
                 <button class="button" v-on:click="gambar = 'image/vueJS.png'">Vue</button>
-                <button class="button" v-on:click="gambar = 'image/angular.png'">Angular</button>        
+                <button class="button" v-on:click="gambar = 'image/angular.png'">Angular</button>
             </div>
         </header>
 
@@ -74,7 +83,8 @@
             bilangan: 1,
             link: 'http://www.google.com',
             gambar: 'image/vueJS.png',
-            menu: 'home'
+            menu: 'home',
+            kelas: []
         }
 
         const vm = new Vue({
