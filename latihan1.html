@@ -11,13 +11,19 @@
             margin: 5%;
             font-family: 'Quicksand', sans-serif;
         }
+
+        img {
+            width: 10%;
+            height: 10%;
+        }
     </style>
 </head>
 <body>
     
     <div id="app">
-        <h1>{{ bilangan }}</h1>
-        <p>Bilangan ini adalah bilangan {{ infoBilangan }}</p>
+        <img v-bind:src="gambar" alt="">
+        <h1>{{ ubahNama }}</h1>
+        <p>The Progressive JavaScript Framework</p>
         <p>Welcome to Vue js</p>
     </div>
 
@@ -29,7 +35,8 @@
             qty: 2,
             namaDepan: 'Royhan',
             namaBelakang: 'Bumi',
-            bilangan: 5
+            bilangan: 5,
+            gambar: 'image/vueJS.png'
         }
 
         const vm = new Vue({
@@ -53,6 +60,15 @@
                     } else {
                         return 'ganjil'
                     }
+                },
+                ubahNama: function() {
+                    if (this.gambar == 'image/react.png') {
+                        return this.name = 'React JS'
+                    } else if (this.gambar == 'image/vueJS.png') {
+                        return this.name = 'Vue JS'
+                    } else {
+                        return this.name = 'Royhan'
+                    }   
                 }
             }
         });
