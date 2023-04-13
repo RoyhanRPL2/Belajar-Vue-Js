@@ -10,13 +10,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
         body {
-            margin: 5%;
+            margin: 4%;
             font-family: 'Quicksand', sans-serif;
         }
 
         img {
-            width: 20%;
-            height: 20%;
+            width: 10%;
+            height: 10%;
         }
 
         .active {
@@ -49,7 +49,22 @@
             <p>The Progressive JavaScript Framework</p>
             <p>Welcome to Vue js</p>
 
-            <p>{{ kelas }}</p>
+            // contoh penggunaan directive v-for
+            <ul>
+                <li v-for="(item, index) in kelas">{{ index+1 }} - {{ item }}</li>
+            </ul>
+
+            <h3>Perulangan (1-5)</h3>
+            <ul>
+                <li v-for="x in 5">{{ x }}</li>
+            </ul>
+
+            <h3>Mencari Bilangan Genap: {{ numbers }}</h3>
+            <ul>
+                <li v-for="x in cariBilanganGenap(numbers)">{{ x }}</li>
+            </ul>
+
+            <!-- <p>{{ kelas }}</p> -->
             <div>
                 <label for=""><input type="checkbox" value="React" v-model="kelas">React</label>
                 <label for=""><input type="checkbox" value="VueJS" v-model="kelas">VueJS</label>
@@ -84,7 +99,8 @@
             link: 'http://www.google.com',
             gambar: 'image/vueJS.png',
             menu: 'home',
-            kelas: []
+            kelas: ['Golang', 'PHP', 'Python'],
+            numbers: [1, 2, 3, 4, 5]
         }
 
         const vm = new Vue({
@@ -96,6 +112,11 @@
                 },
                 handleClick: function () {
                     this.bilangan++
+                },
+                cariBilanganGenap: function (data) {
+                    return data.filter(angka => {
+                        return angka % 2 == 0
+                    })
                 }
             },
             computed: {
