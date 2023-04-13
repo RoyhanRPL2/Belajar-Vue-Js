@@ -1,150 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Beginner</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
-        body {
-            margin: 4%;
-            font-family: 'Quicksand', sans-serif;
-        }
+      body {
+        margin: 4%;
+        font-family: "Quicksand", sans-serif;
+      }
 
-        img {
-            width: 10%;
-            height: 10%;
-        }
+      img {
+        width: 10%;
+        height: 10%;
+      }
 
-        .active {
-            background-color: salmon;
-            border: 0;
-            padding: 5px;
-        }
+      .active {
+        background-color: salmon;
+        border: 0;
+        padding: 5px;
+      }
 
-        .button {
-            display: block;
-            margin-top: 20px;
-            width: 200px;
-            height: 50px;
-            background-color: white;
-            border: 2px solid black;
-        }
+      .button {
+        display: block;
+        margin-top: 20px;
+        width: 200px;
+        height: 50px;
+        background-color: white;
+        border: 2px solid black;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <header>
-            <img v-bind:src="gambar" alt="">
-            <h1>{{ name }}</h1>
-            <input type="text" v-model="name">
-            <p>Bilangan ini adalah bilangan {{ infoBilangan }}</p>
-            <p>
-                <button @click="handleClick">Click</button>
-            </p>
-            <p>The Progressive JavaScript Framework</p>
-            <p>Welcome to Vue js</p>
+      <header>
+        <img v-bind:src="gambar" alt="" />
+        <h1>{{ name }}</h1>
+        <input type="text" v-model="name" />
+        <p>Bilangan ini adalah bilangan {{ infoBilangan }}</p>
+        <p>
+          <button @click="handleClick">Click</button>
+        </p>
+        <p>The Progressive JavaScript Framework</p>
+        <p>Welcome to Vue js</p>
 
-            // contoh penggunaan directive v-for
-            <ul>
-                <li v-for="(item, index) in kelas">{{ index+1 }} - {{ item }}</li>
-            </ul>
+        // contoh penggunaan directive v-for
+        <h3>Daftar Kelas ({{ kelas.length }})</h3>
+        <ul v-if="kelas.length > 1">
+          <li v-for="(item, index) in kelas">{{ index+1 }} - {{ item }}</li>
+        </ul>
 
-            <h3>Perulangan (1-5)</h3>
-            <ul>
-                <li v-for="x in 5">{{ x }}</li>
-            </ul>
+        <h3>Perulangan (1-5)</h3>
+        <ul>
+          <li v-for="x in 5">{{ x }}</li>
+        </ul>
 
-            <h3>Mencari Bilangan Genap: {{ numbers }}</h3>
-            <ul>
-                <li v-for="x in cariBilanganGenap(numbers)">{{ x }}</li>
-            </ul>
+        <h3>Mencari Bilangan Genap: {{ numbers }}</h3>
+        <ul>
+          <li v-for="x in cariBilanganGenap(numbers)">{{ x }}</li>
+        </ul>
 
-            <!-- <p>{{ kelas }}</p> -->
-            <div>
-                <label for=""><input type="checkbox" value="React" v-model="kelas">React</label>
-                <label for=""><input type="checkbox" value="VueJS" v-model="kelas">VueJS</label>
-                <label for=""><input type="checkbox" value="Angular" v-model="kelas">Angular</label>
-            </div>
+        <!-- <p>{{ kelas }}</p> -->
+        <div>
+          <label for=""
+            ><input type="checkbox" value="React" v-model="kelas" />React</label
+          >
+          <label for=""
+            ><input type="checkbox" value="VueJS" v-model="kelas" />VueJS</label
+          >
+          <label for=""
+            ><input
+              type="checkbox"
+              value="Angular"
+              v-model="kelas"
+            />Angular</label
+          >
+        </div>
 
-            <p>
-                <button v-bind:class="{active:menu === 'home'}" v-on:click="menu = 'home'">Home</button>
-                <button v-bind:class="{active:menu === 'about'}" v-on:click="menu = 'about'">About</button>
-                <button v-bind:class="{active:menu === 'blog'}" v-on:click="menu = 'blog'">Blog</button>
-            </p>
+        <p>
+          <button
+            v-bind:class="{active:menu === 'home'}"
+            v-on:click="menu = 'home'"
+          >
+            Home
+          </button>
+          <button
+            v-bind:class="{active:menu === 'about'}"
+            v-on:click="menu = 'about'"
+          >
+            About
+          </button>
+          <button
+            v-bind:class="{active:menu === 'blog'}"
+            v-on:click="menu = 'blog'"
+          >
+            Blog
+          </button>
+        </p>
 
-
-            <div>
-                <button class="button" v-on:click="gambar = 'image/react.png'">React</button>
-                <button class="button" v-on:click="gambar = 'image/vueJS.png'">Vue</button>
-                <button class="button" v-on:click="gambar = 'image/angular.png'">Angular</button>
-            </div>
-        </header>
-
+        <div>
+          <button class="button" v-on:click="gambar = 'image/react.png'">
+            React
+          </button>
+          <button class="button" v-on:click="gambar = 'image/vueJS.png'">
+            Vue
+          </button>
+          <button class="button" v-on:click="gambar = 'image/angular.png'">
+            Angular
+          </button>
+        </div>
+      </header>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script>
-        const company = {
-            name: 'Royhan',
-            message: "Hello World!",
-            qty: 2,
-            namaDepan: 'Royhan',
-            namaBelakang: 'Bumi',
-            bilangan: 1,
-            link: 'http://www.google.com',
-            gambar: 'image/vueJS.png',
-            menu: 'home',
-            kelas: ['Golang', 'PHP', 'Python'],
-            numbers: [1, 2, 3, 4, 5]
-        }
+      const company = {
+        name: "Royhan",
+        message: "Hello World!",
+        qty: 2,
+        namaDepan: "Royhan",
+        namaBelakang: "Bumi",
+        bilangan: 1,
+        link: "http://www.google.com",
+        gambar: "image/vueJS.png",
+        menu: "home",
+        kelas: ["Golang", "PHP", "Python"],
+        numbers: [1, 2, 3, 4, 5],
+      };
 
-        const vm = new Vue({
-            el: '#app',
-            data: company,
-            methods: {
-                getName: function () {
-                    return 'Hello, ' + this.name
-                },
-                handleClick: function () {
-                    this.bilangan++
-                },
-                cariBilanganGenap: function (data) {
-                    return data.filter(angka => {
-                        return angka % 2 == 0
-                    })
-                }
-            },
-            computed: {
-                totalBayar: function () {
-                    return this.qty * 10000
-                },
-                namaLengkap: function () {
-                    return this.namaDepan + ' ' + this.namaBelakang
-                },
-                infoBilangan: function () {
-                    if (this.bilangan % 2 == 0) {
-                        return 'genap'
-                    } else {
-                        return 'ganjil'
-                    }
-                },
-                ubahNama: function () {
-                    if (this.gambar == 'image/react.png') {
-                        return this.name = 'React JS'
-                    } else if (this.gambar == 'image/vueJS.png') {
-                        return this.name = 'Vue JS'
-                    } else {
-                        return this.name = 'Royhan'
-                    }
-                }
+      const vm = new Vue({
+        el: "#app",
+        data: company,
+        methods: {
+          getName: function () {
+            return "Hello, " + this.name;
+          },
+          handleClick: function () {
+            this.bilangan++;
+          },
+          cariBilanganGenap: function (data) {
+            return data.filter((angka) => {
+              return angka % 2 == 0;
+            });
+          },
+        },
+        computed: {
+          totalBayar: function () {
+            return this.qty * 10000;
+          },
+          namaLengkap: function () {
+            return this.namaDepan + " " + this.namaBelakang;
+          },
+          infoBilangan: function () {
+            if (this.bilangan % 2 == 0) {
+              return "genap";
+            } else {
+              return "ganjil";
             }
-        });
+          },
+          ubahNama: function () {
+            if (this.gambar == "image/react.png") {
+              return (this.name = "React JS");
+            } else if (this.gambar == "image/vueJS.png") {
+              return (this.name = "Vue JS");
+            } else {
+              return (this.name = "Royhan");
+            }
+          },
+        },
+      });
     </script>
-</body>
-
+  </body>
 </html>
