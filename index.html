@@ -50,12 +50,14 @@
 
         // contoh penggunaan directive v-for
         <h3>Daftar Kelas ({{ kelas.length }})</h3>
-        // contoh penggunaan directive v-if
-        <ul v-if="kelas.length > 1">
-          <li v-for="(item, index) in kelas">{{ index+1 }} - {{ item }}</li>
-        </ul>
-        // contoh penggunaan directive v-else
-        <li v-else>Kelas Belum Tersedia</li>
+        <template v-if="kelas.length >= 1">
+          // contoh penggunaan directive v-if
+          <ul>
+            <li v-for="(item, index) in kelas">{{ index+1 }} - {{ item }}</li>
+          </ul>
+          // contoh penggunaan directive v-else
+          <li v-else>Kelas Belum Tersedia</li>
+        </template>
 
         <h3>Perulangan (1-5)</h3>
         <ul>
@@ -131,7 +133,7 @@
         link: "http://www.google.com",
         gambar: "image/vueJS.png",
         menu: "home",
-        kelas: [],
+        kelas: ["Golang", "PHP"],
         numbers: [1, 2, 3, 4, 5],
       };
 
