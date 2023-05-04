@@ -48,14 +48,14 @@
         <p>The Progressive JavaScript Framework</p>
         <p>Welcome to Vue js</p>
 
-        // contoh penggunaan directive v-for
+        <!--  contoh penggunaan directive v-for -->
         <h3>Daftar Kelas ({{ kelas.length }})</h3>
         <template v-if="kelas.length >= 1">
-          // contoh penggunaan directive v-if
+          <!-- contoh penggunaan directive v-if -->
           <ul>
             <li v-for="(item, index) in kelas">{{ index+1 }} - {{ item }}</li>
           </ul>
-          // contoh penggunaan directive v-else
+          <!-- contoh penggunaan directive v-else -->
           <li v-else>Kelas Belum Tersedia</li>
         </template>
 
@@ -86,27 +86,19 @@
           >
         </div>
 
-        <p>
-          <button
-            v-bind:class="{active:menu === 'home'}"
-            v-on:click="menu = 'home'"
-          >
+        <!-- contoh penggunaan object event  -->
+          <a v-bind:class="{active:menu === 'home'}" href="#"  v-on:click="gantimenu('home', $event)">
             Home
-          </button>
-          <button
-            v-bind:class="{active:menu === 'about'}"
-            v-on:click="menu = 'about'"
+          </a>
+          <a
+            v-bind:class="{active:menu === 'about'}"href="#" 
+            v-on:click="gantimenu('about', $event)"
           >
             About
-          </button>
-          <button
-            v-bind:class="{active:menu === 'blog'}"
-            v-on:click="menu = 'blog'"
-          >
+          </a>
+          <a v-bind:class="{active:menu === 'blog'}" href="#" v-on:click="gantimenu('blog', $event)"> 
             Blog
-          </button>
-        </p>
-
+          </a>
         <div>
           <button class="button" v-on:click="gambar = 'image/react.png'">
             React
@@ -152,6 +144,11 @@
               return angka % 2 == 0;
             });
           },
+          gantimenu: function(data, event) {
+            event.preventDefault();
+            console.log(event);
+            this.menu = data  
+          }
         },
         computed: {
           totalBayar: function () {
