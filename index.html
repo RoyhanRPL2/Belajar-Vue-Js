@@ -87,16 +87,16 @@
         </div>
 
         <!-- contoh penggunaan object event  -->
-          <a v-bind:class="{active:menu === 'home'}" href="#"  v-on:click="gantimenu('home', $event)">
+          <a v-bind:class="{active:menu === 'home'}" href="#"  v-on:click.prevent="gantimenu('home')">
             Home
           </a>
           <a
             v-bind:class="{active:menu === 'about'}"href="#" 
-            v-on:click="gantimenu('about', $event)"
+            v-on:click.prevent="gantimenu('about')"
           >
             About
           </a>
-          <a v-bind:class="{active:menu === 'blog'}" href="#" v-on:click="gantimenu('blog', $event)"> 
+          <a v-bind:class="{active:menu === 'blog'}" href="#" v-on:click.prevent="gantimenu('blog')"> 
             Blog
           </a>
         <div>
@@ -145,8 +145,6 @@
             });
           },
           gantimenu: function(data, event) {
-            event.preventDefault();
-            console.log(event);
             this.menu = data  
           }
         },
